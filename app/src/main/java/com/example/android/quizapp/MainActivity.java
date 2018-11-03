@@ -1,6 +1,9 @@
 package com.example.android.quizapp;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.app.AlertDialog.Builder;
+import android.app.AlertDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -34,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         configureViews();
         setupViews();
     }
@@ -120,12 +123,56 @@ public class MainActivity extends AppCompatActivity {
     // MARK: - Actions
     public void validateAnswers(View v) {
         dismissKeyboard();
-        validateQuestion1();
-        validateQuestion2();
-        validateQuestion3();
-        validateQuestion4();
-        validateQuestion5();
-        validateQuestion6();
+        Boolean question1Correct = validateQuestion1();
+        Boolean question2Correct = validateQuestion2();
+        Boolean question3Correct = validateQuestion3();
+        Boolean question4Correct = validateQuestion4();
+        Boolean question5Correct = validateQuestion5();
+        Boolean question6Correct = validateQuestion6();
+        if (question1Correct &&
+                question2Correct &&
+                question3Correct &&
+                question4Correct &&
+                question5Correct &&
+                question6Correct) {
+            showSuccessAlert();
+        } else {
+            showFailureAlert();
+        }
+    }
+
+    private void showSuccessAlert() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("You got all the questions right!");
+        builder.setCancelable(true);
+
+        builder.setPositiveButton(
+                "Yay!",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder.create();
+        alert11.show();
+    }
+
+    private void showFailureAlert() {
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage("You got a few questions wrong. Please try again");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
 
     private void dismissKeyboard() {
@@ -135,15 +182,17 @@ public class MainActivity extends AppCompatActivity {
         imm.hideSoftInputFromWindow(question6EditText.getWindowToken(), 0);
     }
 
-    private void validateQuestion1() {
+    private Boolean validateQuestion1()    {
         if (question1EditText.getText().toString().equals(getText(R.string.question_1_answer))) {
             question1EditText.setBackgroundColor(Color.parseColor("#4CAF50"));
+            return true;
         } else {
             question1EditText.setBackgroundColor(Color.parseColor("#B00020"));
+            return false;
         }
     }
 
-    private void validateQuestion2() {
+    private Boolean validateQuestion2() {
         // This initial check is to make sure that the app does not crash if a negative value is passed through.
         // By default a negative value populates if no radio button is selected
         if (question2RadioGroup.getCheckedRadioButtonId() != -1) {
@@ -151,23 +200,28 @@ public class MainActivity extends AppCompatActivity {
             RadioButton selectedRadioButton = findViewById(selectedRadioButtonID);
             if (selectedRadioButton.getText().equals(getText(R.string.question_2_answer))) {
                 question2RadioGroup.setBackgroundColor(Color.parseColor("#4CAF50"));
+                return true;
             } else {
                 question2RadioGroup.setBackgroundColor(Color.parseColor("#B00020"));
+                return false;
             }
         } else {
             question2RadioGroup.setBackgroundColor(Color.parseColor("#B00020"));
+            return false;
         }
     }
 
-    private void validateQuestion3() {
+    private Boolean validateQuestion3() {
         if (question3EditText.getText().toString().equals(getText(R.string.question_3_answer))) {
             question3EditText.setBackgroundColor(Color.parseColor("#4CAF50"));
+            return true;
         } else {
             question3EditText.setBackgroundColor(Color.parseColor("#B00020"));
+            return false;
         }
     }
 
-    private void validateQuestion4() {
+    private Boolean validateQuestion4() {
         CheckBox checkbox1 = findViewById(R.id.question4Response1);
         CheckBox checkbox2 = findViewById(R.id.question4Response2);
         CheckBox checkbox3 = findViewById(R.id.question4Response3);
@@ -190,9 +244,14 @@ public class MainActivity extends AppCompatActivity {
         if (checkbox4.isChecked()) {
             checkbox4.setBackgroundColor(Color.parseColor("#B00020"));
         }
+        if (checkbox1.isChecked() && checkbox3.isChecked()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    private void validateQuestion5() {
+    private Boolean validateQuestion5() {
         // This initial check is to make sure that the app does not crash if a negative value is passed through.
         // By default a negative value populates if no radio button is selected
         if (question5RadioGroup.getCheckedRadioButtonId() != -1) {
@@ -200,19 +259,24 @@ public class MainActivity extends AppCompatActivity {
             RadioButton selectedRadioButton = findViewById(selectedRadioButtonID);
             if (selectedRadioButton.getText().equals(getText(R.string.question_5_answer))) {
                 question5RadioGroup.setBackgroundColor(Color.parseColor("#4CAF50"));
+                return true;
             } else {
                 question5RadioGroup.setBackgroundColor(Color.parseColor("#B00020"));
+                return false;
             }
         } else {
             question5RadioGroup.setBackgroundColor(Color.parseColor("#B00020"));
+            return false;
         }
     }
 
-    private void validateQuestion6() {
+    private Boolean validateQuestion6() {
         if (question6EditText.getText().toString().equals(getText(R.string.question_6_answer))) {
             question6EditText.setBackgroundColor(Color.parseColor("#4CAF50"));
+            return true;
         } else {
             question6EditText.setBackgroundColor(Color.parseColor("#B00020"));
+            return false;
         }
     }
 }
