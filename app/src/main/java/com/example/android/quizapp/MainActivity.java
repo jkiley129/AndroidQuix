@@ -143,11 +143,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void showSuccessAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("You got all the questions right!");
+        builder.setMessage(getText(R.string.success_alert_title));
         builder.setCancelable(true);
 
         builder.setPositiveButton(
-                "Yay!",
+                getText(R.string.success_alert_button),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
@@ -160,11 +160,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void showFailureAlert() {
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setMessage("You got a few questions wrong. Please try again");
+        builder1.setMessage(R.string.failure_alert_title));
         builder1.setCancelable(true);
 
         builder1.setPositiveButton(
-                "OK",
+                getText(R.string.failure_alert_button),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
