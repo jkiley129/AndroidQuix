@@ -2,7 +2,6 @@ package com.example.android.quizapp;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.app.AlertDialog.Builder;
 import android.app.AlertDialog;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,6 +14,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -135,44 +135,36 @@ public class MainActivity extends AppCompatActivity {
                 question4Correct == true &&
                 question5Correct == true &&
                 question6Correct == true) {
-            showSuccessAlert();
+            showSuccessToast();
         } else {
-            showFailureAlert();
+            showFailureToast();
         }
     }
 
-    private void showSuccessAlert() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(getText(R.string.success_alert_title));
-        builder.setCancelable(true);
+    private void showSuccessToast() {
+        Context context = getApplicationContext();
+        CharSequence text = getText(R.string.failure_alert_title);
+        int duration = Toast.LENGTH_SHORT;
 
-        builder.setPositiveButton(
-                getText(R.string.success_alert_button),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-
-        AlertDialog alert11 = builder.create();
-        alert11.show();
+        Toast toast = Toast.makeText(context, text, duration);
+        View view = toast.getView();
+        view.setBackgroundColor(Color.parseColor("#4CAF50"));
+        TextView newText = view.findViewById(android.R.id.message);
+        newText.setTextColor(Color.parseColor("#212121"));
+        toast.show();
     }
 
-    private void showFailureAlert() {
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setMessage(getText(R.string.failure_alert_title));
-        builder1.setCancelable(true);
+    private void showFailureToast() {
+        Context context = getApplicationContext();
+        CharSequence text = getText(R.string.failure_alert_title);
+        int duration = Toast.LENGTH_SHORT;
 
-        builder1.setPositiveButton(
-                getText(R.string.failure_alert_button),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-
-        AlertDialog alert11 = builder1.create();
-        alert11.show();
+        Toast toast = Toast.makeText(context, text, duration);
+        View view = toast.getView();
+        view.setBackgroundColor(Color.parseColor("#F44336"));
+        TextView newText = view.findViewById(android.R.id.message);
+        newText.setTextColor(Color.parseColor("#757575"));
+        toast.show();
     }
 
     private void dismissKeyboard() {
