@@ -129,12 +129,12 @@ public class MainActivity extends AppCompatActivity {
         Boolean question4Correct = validateQuestion4();
         Boolean question5Correct = validateQuestion5();
         Boolean question6Correct = validateQuestion6();
-        if (question1Correct &&
-                question2Correct &&
-                question3Correct &&
-                question4Correct &&
-                question5Correct &&
-                question6Correct) {
+        if (question1Correct == true &&
+                question2Correct == true &&
+                question3Correct == true &&
+                question4Correct == true &&
+                question5Correct == true &&
+                question6Correct == true) {
             showSuccessAlert();
         } else {
             showFailureAlert();
@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showFailureAlert() {
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setMessage(R.string.failure_alert_title));
+        builder1.setMessage(getText(R.string.failure_alert_title));
         builder1.setCancelable(true);
 
         builder1.setPositiveButton(
