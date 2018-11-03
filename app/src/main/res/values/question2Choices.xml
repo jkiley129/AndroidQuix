@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="question2_choice1">Moto G5</string>
+    <string name="question2_choice2">Google Pixel</string>
+    <string name="question2_choice3">HTC Dream</string>
+    <string name="question2_choice4">Samsung Galaxy</string>
+</resources>
