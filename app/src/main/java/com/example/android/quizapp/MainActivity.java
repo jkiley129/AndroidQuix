@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         question1EditText = findViewById(R.id.question1Response);
         question2RadioGroup = findViewById(R.id.question2RadioGroup);
         question3EditText = findViewById(R.id.question3Response);
+        question5RadioGroup = findViewById(R.id.question5RadioGroup);
         question6EditText = findViewById(R.id.question6Response);
         validateButton = findViewById(R.id.validate);
         titleTextView.setText(getString(R.string.app_title));
@@ -73,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupQuestion2() {
-        for (int i = 0; i < question2RadioGroup.getChildCount(); i++) {
+        int i = 0;
+        while (i < question2RadioGroup.getChildCount()) {
             String textToSet = "";
             if (i == 0) {
                 textToSet = getString(R.string.question2_choice1);
@@ -85,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 textToSet = getString(R.string.question2_choice4);
             }
             ((RadioButton) question2RadioGroup.getChildAt(i)).setText(textToSet);
+            i++;
         }
     }
 
@@ -100,7 +103,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupQuestion5() {
-        for (int i = 0; i < question5RadioGroup.getChildCount(); i++) {
+        int i = 0;
+        while (i < question5RadioGroup.getChildCount()) {
             String textToSet = "";
             if (i == 0) {
                 textToSet = getString(R.string.question5_choice1);
@@ -112,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 textToSet = getString(R.string.question5_choice4);
             }
             ((RadioButton) question5RadioGroup.getChildAt(i)).setText(textToSet);
+            i++;
         }
     }
 
@@ -142,10 +147,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void validateQuestion2() {
-        int selectedRadioButtonID = question2RadioGroup.getCheckedRadioButtonId();
-        RadioButton selectedRadioButton = findViewById(selectedRadioButtonID);
-        if (selectedRadioButton.getText().equals(question2Answer)) {
-            question2RadioGroup.setBackgroundColor(Color.parseColor("#4CAF50"));
+        // This initial check is to make sure that the app does not crash if a negative value is passed through.
+        // By default a negative value populates if no radio button is selected
+        if (question2RadioGroup.getCheckedRadioButtonId() != -1) {
+            int selectedRadioButtonID = question2RadioGroup.getCheckedRadioButtonId();
+            RadioButton selectedRadioButton = findViewById(selectedRadioButtonID);
+            if (selectedRadioButton.getText().equals(question2Answer)) {
+                question2RadioGroup.setBackgroundColor(Color.parseColor("#4CAF50"));
+            } else {
+                question2RadioGroup.setBackgroundColor(Color.parseColor("#B00020"));
+            }
         } else {
             question2RadioGroup.setBackgroundColor(Color.parseColor("#B00020"));
         }
@@ -167,10 +178,14 @@ public class MainActivity extends AppCompatActivity {
         if (checkbox1.isChecked()
                 && checkbox1.getText().toString().equals(question4AnswerPart1)) {
             checkbox1.setBackgroundColor(Color.parseColor("#4CAF50"));
+        } else {
+            checkbox1.setBackgroundColor(Color.parseColor("#B00020"));
         }
         if (checkbox3.isChecked()
                 && checkbox3.getText().toString().equals(question4AnswerPart2)) {
             checkbox3.setBackgroundColor(Color.parseColor("#4CAF50"));
+        } else {
+            checkbox3.setBackgroundColor(Color.parseColor("#B00020"));
         }
         if (checkbox2.isChecked()) {
             checkbox2.setBackgroundColor(Color.parseColor("#B00020"));
@@ -181,10 +196,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void validateQuestion5() {
-        int selectedRadioButtonID = question5RadioGroup.getCheckedRadioButtonId();
-        RadioButton selectedRadioButton = findViewById(selectedRadioButtonID);
-        if (selectedRadioButton.getText().equals(question5Answer)) {
-            question5RadioGroup.setBackgroundColor(Color.parseColor("#4CAF50"));
+        // This initial check is to make sure that the app does not crash if a negative value is passed through.
+        // By default a negative value populates if no radio button is selected
+        if (question5RadioGroup.getCheckedRadioButtonId() != -1) {
+            int selectedRadioButtonID = question5RadioGroup.getCheckedRadioButtonId();
+            RadioButton selectedRadioButton = findViewById(selectedRadioButtonID);
+            if (selectedRadioButton.getText().equals(question5Answer)) {
+                question5RadioGroup.setBackgroundColor(Color.parseColor("#4CAF50"));
+            } else {
+                question5RadioGroup.setBackgroundColor(Color.parseColor("#B00020"));
+            }
         } else {
             question5RadioGroup.setBackgroundColor(Color.parseColor("#B00020"));
         }
