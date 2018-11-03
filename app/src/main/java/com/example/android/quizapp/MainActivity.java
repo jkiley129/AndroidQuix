@@ -129,12 +129,12 @@ public class MainActivity extends AppCompatActivity {
         Boolean question4Correct = validateQuestion4();
         Boolean question5Correct = validateQuestion5();
         Boolean question6Correct = validateQuestion6();
-        if (question1Correct == true &&
-                question2Correct == true &&
-                question3Correct == true &&
-                question4Correct == true &&
-                question5Correct == true &&
-                question6Correct == true) {
+        if (question1Correct &&
+                question2Correct &&
+                question3Correct &&
+                question4Correct &&
+                question5Correct &&
+                question6Correct) {
             showSuccessToast();
         } else {
             showFailureToast();
@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         View view = toast.getView();
         view.setBackgroundColor(Color.parseColor("#4CAF50"));
         TextView newText = view.findViewById(android.R.id.message);
-        newText.setTextColor(Color.parseColor("#212121"));
+        newText.setTextColor(Color.parseColor("#FFFFFF"));
         toast.show();
     }
 
@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
         View view = toast.getView();
         view.setBackgroundColor(Color.parseColor("#F44336"));
         TextView newText = view.findViewById(android.R.id.message);
-        newText.setTextColor(Color.parseColor("#757575"));
+        newText.setTextColor(Color.parseColor("#FFFFFF"));
         toast.show();
     }
 
