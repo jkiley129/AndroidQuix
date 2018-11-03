@@ -29,18 +29,18 @@ public class MainActivity extends AppCompatActivity {
     RadioGroup question2RadioGroup;
     RadioGroup question5RadioGroup;
     Button validateButton;
-    String question1Answer = "10/22/08";
-    String question2Answer = "HTC Dream";
-    String question3Answer = "Andy Rubin";
-    String question4AnswerPart1 = "Pixel 3";
-    String question4AnswerPart2 = "Pixel 3 XL";
-    String question5Answer = "Pie";
-    String question6Answer = "9";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        configureViews();
+        setupViews();
+    }
+
+    // MARK: - Setup
+    private void configureViews() {
         titleTextView = findViewById(R.id.title);
         question1TextView = findViewById(R.id.question1Title);
         question2TextView = findViewById(R.id.question2Title);
@@ -55,18 +55,15 @@ public class MainActivity extends AppCompatActivity {
         question6EditText = findViewById(R.id.question6Response);
         validateButton = findViewById(R.id.validate);
         titleTextView.setText(getString(R.string.app_title));
-        question1TextView.setText("When was the first Android phone released?");
-        question2TextView.setText("What was the first Android phone model?");
-        question3TextView.setText("Who was the creator of Android?");
-        question4TextView.setText("What are Google’s most recently released Android Phones?");
-        question5TextView.setText("What is the most current version of the Android operating system?");
-        question6TextView.setText("What version number is the current version of the android OS?");
-        validateButton.setText("Check your answers!");
-
-        setupViews();
+        question1TextView.setText(getText(R.string.question_1_prompt));
+        question2TextView.setText(getText(R.string.question_2_prompt));
+        question3TextView.setText(getText(R.string.question_3_prompt));
+        question4TextView.setText(getText(R.string.question_4_prompt));
+        question5TextView.setText(getText(R.string.question_5_prompt));
+        question6TextView.setText(getText(R.string.question_6_prompt));
+        validateButton.setText(getText(R.string.validate_button_text));
     }
 
-    // MARK: - Setup
     private void setupViews() {
         setupQuestion2();
         setupQuestion4();
@@ -139,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void validateQuestion1() {
-        if (question1EditText.getText().toString().equals(question1Answer)) {
+        if (question1EditText.getText().toString().equals(getText(R.string.question_1_answer))) {
             question1EditText.setBackgroundColor(Color.parseColor("#4CAF50"));
         } else {
             question1EditText.setBackgroundColor(Color.parseColor("#B00020"));
@@ -152,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         if (question2RadioGroup.getCheckedRadioButtonId() != -1) {
             int selectedRadioButtonID = question2RadioGroup.getCheckedRadioButtonId();
             RadioButton selectedRadioButton = findViewById(selectedRadioButtonID);
-            if (selectedRadioButton.getText().equals(question2Answer)) {
+            if (selectedRadioButton.getText().equals(getText(R.string.question_2_answer))) {
                 question2RadioGroup.setBackgroundColor(Color.parseColor("#4CAF50"));
             } else {
                 question2RadioGroup.setBackgroundColor(Color.parseColor("#B00020"));
@@ -163,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void validateQuestion3() {
-        if (question3EditText.getText().toString().equals(question3Answer)) {
+        if (question3EditText.getText().toString().equals(getText(R.string.question_3_answer))) {
             question3EditText.setBackgroundColor(Color.parseColor("#4CAF50"));
         } else {
             question3EditText.setBackgroundColor(Color.parseColor("#B00020"));
@@ -176,13 +173,13 @@ public class MainActivity extends AppCompatActivity {
         CheckBox checkbox3 = findViewById(R.id.question4Response3);
         CheckBox checkbox4 = findViewById(R.id.question4Response4);
         if (checkbox1.isChecked()
-                && checkbox1.getText().toString().equals(question4AnswerPart1)) {
+                && checkbox1.getText().toString().equals(getText(R.string.question_4_answer_part_1))) {
             checkbox1.setBackgroundColor(Color.parseColor("#4CAF50"));
         } else {
             checkbox1.setBackgroundColor(Color.parseColor("#B00020"));
         }
         if (checkbox3.isChecked()
-                && checkbox3.getText().toString().equals(question4AnswerPart2)) {
+                && checkbox3.getText().toString().equals(getText(R.string.question_4_answer_part_2))) {
             checkbox3.setBackgroundColor(Color.parseColor("#4CAF50"));
         } else {
             checkbox3.setBackgroundColor(Color.parseColor("#B00020"));
@@ -201,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
         if (question5RadioGroup.getCheckedRadioButtonId() != -1) {
             int selectedRadioButtonID = question5RadioGroup.getCheckedRadioButtonId();
             RadioButton selectedRadioButton = findViewById(selectedRadioButtonID);
-            if (selectedRadioButton.getText().equals(question5Answer)) {
+            if (selectedRadioButton.getText().equals(getText(R.string.question_5_answer))) {
                 question5RadioGroup.setBackgroundColor(Color.parseColor("#4CAF50"));
             } else {
                 question5RadioGroup.setBackgroundColor(Color.parseColor("#B00020"));
@@ -212,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void validateQuestion6() {
-        if (question6EditText.getText().toString().equals(question6Answer)) {
+        if (question6EditText.getText().toString().equals(getText(R.string.question_6_answer))) {
             question6EditText.setBackgroundColor(Color.parseColor("#4CAF50"));
         } else {
             question6EditText.setBackgroundColor(Color.parseColor("#B00020"));

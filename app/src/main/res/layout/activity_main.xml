@@ -108,6 +108,7 @@
 
         <EditText
             android:id="@+id/question3Response"
+            android:hint="@string/question_3_hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -231,6 +232,7 @@
 
         <EditText
             android:id="@+id/question6Response"
+            android:hint="@string/question_6_hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
