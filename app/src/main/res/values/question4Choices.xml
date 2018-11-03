@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="question4_choice1">Pixel 3</string>
+    <string name="question4_choice2">Galaxy 9</string>
+    <string name="question4_choice3">Pixel 3 XL</string>
+    <string name="question4_choice4">Essential Phone</string>
+</resources>

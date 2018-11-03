@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="question5_choice1">Kit Kat</string>
+    <string name="question5_choice2">Pie</string>
+    <string name="question5_choice3">Lollipop</string>
+    <string name="question5_choice4">Ice Cream Sandwich</string>
+</resources>

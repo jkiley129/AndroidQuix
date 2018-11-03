@@ -4,10 +4,10 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
     String question1Answer = "10/22/08";
     String question2Answer = "HTC Dream";
     String question3Answer = "Andy Rubin";
-    String question4Answer = "Pixel 3 and Pixel 3 XL";
+    String question4AnswerPart1 = "Pixel 3";
+    String question4AnswerPart2 = "Pixel 3 XL";
     String question5Answer = "Pie";
     String question6Answer = "9";
 
@@ -67,10 +68,12 @@ public class MainActivity extends AppCompatActivity {
     // MARK: - Setup
     private void setupViews() {
         setupQuestion2();
+        setupQuestion4();
+        setupQuestion5();
     }
 
     private void setupQuestion2() {
-        for (int i = 0; i <  question2RadioGroup.getChildCount(); i++) {
+        for (int i = 0; i < question2RadioGroup.getChildCount(); i++) {
             String textToSet = "";
             if (i == 0) {
                 textToSet = getString(R.string.question2_choice1);
@@ -85,15 +88,42 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void setupQuestion4() {
+        CheckBox checkbox1 = findViewById(R.id.question4Response1);
+        CheckBox checkbox2 = findViewById(R.id.question4Response2);
+        CheckBox checkbox3 = findViewById(R.id.question4Response3);
+        CheckBox checkbox4 = findViewById(R.id.question4Response4);
+        checkbox1.setText(getText(R.string.question4_choice1));
+        checkbox2.setText(getText(R.string.question4_choice2));
+        checkbox3.setText(getText(R.string.question4_choice3));
+        checkbox4.setText(getText(R.string.question4_choice4));
+    }
+
+    private void setupQuestion5() {
+        for (int i = 0; i < question5RadioGroup.getChildCount(); i++) {
+            String textToSet = "";
+            if (i == 0) {
+                textToSet = getString(R.string.question5_choice1);
+            } else if (i == 1) {
+                textToSet = getString(R.string.question5_choice2);
+            } else if (i == 2) {
+                textToSet = getString(R.string.question5_choice3);
+            } else if (i == 3) {
+                textToSet = getString(R.string.question5_choice4);
+            }
+            ((RadioButton) question5RadioGroup.getChildAt(i)).setText(textToSet);
+        }
+    }
+
     // MARK: - Actions
     public void validateAnswers(View v) {
         dismissKeyboard();
         validateQuestion1();
         validateQuestion2();
         validateQuestion3();
-//        validateQuestion4();
-//        validateQuestion5();
-//        validateQuestion6();
+        validateQuestion4();
+        validateQuestion5();
+        validateQuestion6();
     }
 
     private void dismissKeyboard() {
@@ -130,14 +160,41 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void validateQuestion4() {
-
+        CheckBox checkbox1 = findViewById(R.id.question4Response1);
+        CheckBox checkbox2 = findViewById(R.id.question4Response2);
+        CheckBox checkbox3 = findViewById(R.id.question4Response3);
+        CheckBox checkbox4 = findViewById(R.id.question4Response4);
+        if (checkbox1.isChecked()
+                && checkbox1.getText().toString().equals(question4AnswerPart1)) {
+            checkbox1.setBackgroundColor(Color.parseColor("#4CAF50"));
+        }
+        if (checkbox3.isChecked()
+                && checkbox3.getText().toString().equals(question4AnswerPart2)) {
+            checkbox3.setBackgroundColor(Color.parseColor("#4CAF50"));
+        }
+        if (checkbox2.isChecked()) {
+            checkbox2.setBackgroundColor(Color.parseColor("#B00020"));
+        }
+        if (checkbox4.isChecked()) {
+            checkbox4.setBackgroundColor(Color.parseColor("#B00020"));
+        }
     }
 
     private void validateQuestion5() {
-
+        int selectedRadioButtonID = question5RadioGroup.getCheckedRadioButtonId();
+        RadioButton selectedRadioButton = findViewById(selectedRadioButtonID);
+        if (selectedRadioButton.getText().equals(question5Answer)) {
+            question5RadioGroup.setBackgroundColor(Color.parseColor("#4CAF50"));
+        } else {
+            question5RadioGroup.setBackgroundColor(Color.parseColor("#B00020"));
+        }
     }
 
     private void validateQuestion6() {
-
+        if (question6EditText.getText().toString().equals(question6Answer)) {
+            question6EditText.setBackgroundColor(Color.parseColor("#4CAF50"));
+        } else {
+            question6EditText.setBackgroundColor(Color.parseColor("#B00020"));
+        }
     }
 }
