@@ -18,8 +18,6 @@
     <string name="question_4_answer_part_2">Pixel 3 XL</string>
     <string name="question_5_answer">Pie</string>
     <string name="question_6_answer">9</string>
-    <string name="success_alert_title">You got all the questions right!</string>
-    <string name="success_alert_button">Yay!</string>
-    <string name="failure_alert_title">You got some answers wrong. Please check your answers highlighted in red and try again.</string>
-    <string name="failure_alert_button">OK</string>
+    <string name="success_alert_title">You got all the questions right! 6/6 Correct.</string>
+    <string name="failure_alert_title">You have some incorrect answers. You got</string>
 </resources>

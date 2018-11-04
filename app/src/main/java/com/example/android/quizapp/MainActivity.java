@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     RadioGroup question2RadioGroup;
     RadioGroup question5RadioGroup;
     Button validateButton;
+    int correctAnswers = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
     // MARK: - Actions
     public void validateAnswers(View v) {
+        correctAnswers = 0;
         dismissKeyboard();
         Boolean question1Correct = validateQuestion1();
         Boolean question2Correct = validateQuestion2();
@@ -141,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showSuccessToast() {
         Context context = getApplicationContext();
-        CharSequence text = getText(R.string.failure_alert_title);
+        CharSequence text = getText(R.string.success_alert_title);
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(context, text, duration);
@@ -154,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showFailureToast() {
         Context context = getApplicationContext();
-        CharSequence text = getText(R.string.failure_alert_title);
+        CharSequence text = getText(R.string.failure_alert_title) + " " + Integer.toString(correctAnswers) + "/" + "6 correct";
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(context, text, duration);
@@ -174,10 +176,11 @@ public class MainActivity extends AppCompatActivity {
 
     private Boolean validateQuestion1()    {
         if (question1EditText.getText().toString().equals(getText(R.string.question_1_answer))) {
-            question1EditText.setBackgroundColor(Color.parseColor("#4CAF50"));
+            question1EditText.setBackgroundColor(getResources().getColor(R.color.correctColor));
+            correctAnswers += 1;
             return true;
         } else {
-            question1EditText.setBackgroundColor(Color.parseColor("#B00020"));
+            question1EditText.setBackgroundColor(getResources().getColor(R.color.incorrectColor));
             return false;
         }
     }
@@ -189,24 +192,26 @@ public class MainActivity extends AppCompatActivity {
             int selectedRadioButtonID = question2RadioGroup.getCheckedRadioButtonId();
             RadioButton selectedRadioButton = findViewById(selectedRadioButtonID);
             if (selectedRadioButton.getText().equals(getText(R.string.question_2_answer))) {
-                question2RadioGroup.setBackgroundColor(Color.parseColor("#4CAF50"));
+                question2RadioGroup.setBackgroundColor(getResources().getColor(R.color.correctColor));
+                correctAnswers += 1;
                 return true;
             } else {
-                question2RadioGroup.setBackgroundColor(Color.parseColor("#B00020"));
+                question2RadioGroup.setBackgroundColor(getResources().getColor(R.color.incorrectColor));
                 return false;
             }
         } else {
-            question2RadioGroup.setBackgroundColor(Color.parseColor("#B00020"));
+            question2RadioGroup.setBackgroundColor(getResources().getColor(R.color.incorrectColor));
             return false;
         }
     }
 
     private Boolean validateQuestion3() {
         if (question3EditText.getText().toString().equals(getText(R.string.question_3_answer))) {
-            question3EditText.setBackgroundColor(Color.parseColor("#4CAF50"));
+            question3EditText.setBackgroundColor(getResources().getColor(R.color.correctColor));
+            correctAnswers += 1;
             return true;
         } else {
-            question3EditText.setBackgroundColor(Color.parseColor("#B00020"));
+            question3EditText.setBackgroundColor(getResources().getColor(R.color.incorrectColor));
             return false;
         }
     }
@@ -218,23 +223,24 @@ public class MainActivity extends AppCompatActivity {
         CheckBox checkbox4 = findViewById(R.id.question4Response4);
         if (checkbox1.isChecked()
                 && checkbox1.getText().toString().equals(getText(R.string.question_4_answer_part_1))) {
-            checkbox1.setBackgroundColor(Color.parseColor("#4CAF50"));
+            checkbox1.setBackgroundColor(getResources().getColor(R.color.correctColor));
         } else {
-            checkbox1.setBackgroundColor(Color.parseColor("#B00020"));
+            checkbox1.setBackgroundColor(getResources().getColor(R.color.incorrectColor));
         }
         if (checkbox3.isChecked()
                 && checkbox3.getText().toString().equals(getText(R.string.question_4_answer_part_2))) {
-            checkbox3.setBackgroundColor(Color.parseColor("#4CAF50"));
+            checkbox3.setBackgroundColor(getResources().getColor(R.color.correctColor));
         } else {
-            checkbox3.setBackgroundColor(Color.parseColor("#B00020"));
+            checkbox3.setBackgroundColor(getResources().getColor(R.color.incorrectColor));
         }
         if (checkbox2.isChecked()) {
-            checkbox2.setBackgroundColor(Color.parseColor("#B00020"));
+            checkbox2.setBackgroundColor(getResources().getColor(R.color.incorrectColor));
         }
         if (checkbox4.isChecked()) {
-            checkbox4.setBackgroundColor(Color.parseColor("#B00020"));
+            checkbox4.setBackgroundColor(getResources().getColor(R.color.incorrectColor));
         }
-        if (checkbox1.isChecked() && checkbox3.isChecked()) {
+        if (checkbox1.isChecked() && !checkbox2.isChecked() && checkbox3.isChecked() && !checkbox4.isChecked()) {
+            correctAnswers += 1;
             return true;
         } else {
             return false;
@@ -248,24 +254,26 @@ public class MainActivity extends AppCompatActivity {
             int selectedRadioButtonID = question5RadioGroup.getCheckedRadioButtonId();
             RadioButton selectedRadioButton = findViewById(selectedRadioButtonID);
             if (selectedRadioButton.getText().equals(getText(R.string.question_5_answer))) {
-                question5RadioGroup.setBackgroundColor(Color.parseColor("#4CAF50"));
+                question5RadioGroup.setBackgroundColor(getResources().getColor(R.color.correctColor));
+                correctAnswers += 1;
                 return true;
             } else {
-                question5RadioGroup.setBackgroundColor(Color.parseColor("#B00020"));
+                question5RadioGroup.setBackgroundColor(getResources().getColor(R.color.incorrectColor));
                 return false;
             }
         } else {
-            question5RadioGroup.setBackgroundColor(Color.parseColor("#B00020"));
+            question5RadioGroup.setBackgroundColor(getResources().getColor(R.color.incorrectColor));
             return false;
         }
     }
 
     private Boolean validateQuestion6() {
         if (question6EditText.getText().toString().equals(getText(R.string.question_6_answer))) {
-            question6EditText.setBackgroundColor(Color.parseColor("#4CAF50"));
+            question6EditText.setBackgroundColor(getResources().getColor(R.color.correctColor));
+            correctAnswers += 1;
             return true;
         } else {
-            question6EditText.setBackgroundColor(Color.parseColor("#B00020"));
+            question6EditText.setBackgroundColor(getResources().getColor(R.color.correctColor));
             return false;
         }
     }
