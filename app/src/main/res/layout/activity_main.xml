@@ -8,26 +8,12 @@
         android:orientation="vertical">
 
     <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="40sp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginTop="8dp" />
+        android:id="@+id/title"
+        style="@style/TextViewStyle" />
 
         <TextView
             android:id="@+id/question1Title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="25sp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginTop="8dp" />
+            style="@style/TextViewStyle" />
 
         <EditText
             android:id="@+id/question1Response"
@@ -41,14 +27,7 @@
 
         <TextView
             android:id="@+id/question2Title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="25sp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginTop="8dp" />
+            style="@style/TextViewStyle" />
 
         <RadioGroup
             android:id="@+id/question2RadioGroup"
@@ -97,14 +76,7 @@
 
         <TextView
             android:id="@+id/question3Title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="25sp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginTop="8dp" />
+            style="@style/TextViewStyle" />
 
         <EditText
             android:id="@+id/question3Response"
@@ -118,14 +90,7 @@
 
         <TextView
             android:id="@+id/question4Title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="25sp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginTop="8dp" />
+            style="@style/TextViewStyle" />
 
             <CheckBox
                 android:id="@+id/question4Response1"
@@ -165,14 +130,7 @@
 
         <TextView
             android:id="@+id/question5Title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="25sp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginTop="8dp" />
+            style="@style/TextViewStyle" />
 
         <RadioGroup
             android:id="@+id/question5RadioGroup"
@@ -221,14 +179,7 @@
 
         <TextView
             android:id="@+id/question6Title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="25sp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginTop="8dp" />
+            style="@style/TextViewStyle" />
 
         <EditText
             android:id="@+id/question6Response"
