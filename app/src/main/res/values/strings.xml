@@ -3,10 +3,10 @@
     <string name="app_title">Android Quiz</string>
     <string name="question_1_prompt">When was the first Android phone released?</string>
     <string name="question_2_prompt">What was the first Android phone model?</string>
-    <string name="question_3_prompt">When was the first Android phone released?</string>
-    <string name="question_4_prompt">When was the first Android phone released?</string>
-    <string name="question_5_prompt">When was the first Android phone released?</string>
-    <string name="question_6_prompt">When was the first Android phone released?</string>
+    <string name="question_3_prompt">Who was the creator of Android?</string>
+    <string name="question_4_prompt">What are Google’s most recently released Android Phones?</string>
+    <string name="question_5_prompt">What is the most current version of the Android operating system?</string>
+    <string name="question_6_prompt">What version number is the current version of the android OS?</string>
     <string name="validate_button_text">Check your answers!</string>
     <string name="question_1_hint">MM/DD/YY</string>
     <string name="question_3_hint">Name</string>
